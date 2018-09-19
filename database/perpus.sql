@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 17, 2018 at 01:17 AM
+-- Generation Time: Sep 19, 2018 at 08:05 AM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -42,11 +42,17 @@ CREATE TABLE `buku` (
 --
 
 INSERT INTO `buku` (`idbuku`, `kodebuku`, `namabuku`, `tahun`, `jumlahbuku`, `stok`) VALUES
-(2, '2312', 'Portologi', 2018, 5, 5),
-(3, '4312', 'Sosiologi', 2001, 4, 4),
-(4, '4312', 'Sosiologi', 0000, 4, 4),
-(5, '4312', 'Sosiologi', 0000, 4, 4),
-(6, '4312', 'Sosiologi', 0000, 4, 4);
+(6, 'BIO123', 'Menyelami CodeIgniter', 2013, 10, 10),
+(7, 'ARC142', 'Sistem Manajemen Linux', 2016, 4, 4),
+(8, 'TIK089', 'Analisis Datawarehouse', 2011, 3, 3),
+(9, 'TIK010', 'Database Management', 2014, 1, 1),
+(10, 'SIE100', 'Teknik Penggunaan Excel', 2003, 1, 1),
+(11, 'TIN723', 'Javascript For Kids', 2017, 4, 4),
+(12, 'TIN724', 'Javascript Tips dan Trik', 2016, 3, 3),
+(13, 'RES123', 'Dasar-Dasar Psikologi', 2013, 6, 6),
+(14, 'TER203', 'Relationship', 2003, 2, 2),
+(15, 'ASR201', 'Algoritma Pemrograman Dasar', 2014, 3, 3),
+(16, 'RAN123', 'Pengetahuan Dasar Informatika', 2001, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -59,6 +65,13 @@ CREATE TABLE `denda` (
   `lamadenda` int(2) DEFAULT NULL,
   `nominal` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `denda`
+--
+
+INSERT INTO `denda` (`iddenda`, `lamadenda`, `nominal`) VALUES
+(2, 1, '1000');
 
 -- --------------------------------------------------------
 
@@ -75,6 +88,16 @@ CREATE TABLE `peminjam` (
   `nohp` varchar(12) DEFAULT NULL,
   `email` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `peminjam`
+--
+
+INSERT INTO `peminjam` (`idpeminjam`, `kodepeminjam`, `namapeminjam`, `gender`, `alamat`, `nohp`, `email`) VALUES
+(1, '321', 'Abdul Faris', 'pria', 'Jl. merapi', '1231048', 'fzain417@gmail.com'),
+(3, '201832001', 'Beti', 'wanita', 'Ambna', '08124556123', 'beti@gmail.com'),
+(4, '201832002', 'Alex karobu', 'pria', 'Belakang Golkar', '085254444688', 'alex@gmail.com'),
+(5, '201832003', 'Risan Asyri', 'wanita', 'Borobudur', '081246645455', 'fzain712@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -97,7 +120,7 @@ CREATE TABLE `petugas` (
 --
 
 INSERT INTO `petugas` (`idpetugas`, `namapetugas`, `alamat`, `gender`, `nomorhp`, `username`, `password`) VALUES
-(1, 'admin', 'admin', 'pria', '123456', 'admin', '21232f297a57a5a743894a0e4a801fc3');
+(3, 'Faris', 'Jl. Gunung Merapi', 'pria', '081244455564', 'admin', '21232f297a57a5a743894a0e4a801fc3');
 
 -- --------------------------------------------------------
 
@@ -122,7 +145,7 @@ CREATE TABLE `transaksipeminjaman` (
 --
 DELIMITER $$
 CREATE TRIGGER `transaksipeminjaman_AFTER_INSERT` AFTER INSERT ON `transaksipeminjaman` FOR EACH ROW BEGIN
-	UPDATE buku set buku.stok = buku.stok+new.jumlahpinjaman WHERE buku.idbuku = new.buku_idbuku;
+	UPDATE buku set buku.stok = buku.stok-new.jumlahpinjaman WHERE buku.idbuku = new.buku_idbuku;
 END
 $$
 DELIMITER ;
@@ -139,8 +162,21 @@ CREATE TABLE `transaksipengembalian` (
   `denda` varchar(12) DEFAULT NULL,
   `petugas_idpetugas` int(3) NOT NULL,
   `peminjam_idpeminjam` int(3) NOT NULL,
-  `buku_idbuku` int(3) NOT NULL
+  `buku_idbuku` int(3) NOT NULL,
+  `jumlahkembali` int(3) DEFAULT NULL,
+  `jumlahhariketerlambatan` int(3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Triggers `transaksipengembalian`
+--
+DELIMITER $$
+CREATE TRIGGER `transaksipengembalian_AFTER_INSERT` AFTER INSERT ON `transaksipengembalian` FOR EACH ROW BEGIN
+UPDATE buku set buku.stok = buku.stok+new.jumlahkembali WHERE buku.idbuku = new.buku_idbuku;
+
+END
+$$
+DELIMITER ;
 
 --
 -- Indexes for dumped tables
@@ -196,25 +232,25 @@ ALTER TABLE `transaksipengembalian`
 -- AUTO_INCREMENT for table `buku`
 --
 ALTER TABLE `buku`
-  MODIFY `idbuku` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idbuku` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `denda`
 --
 ALTER TABLE `denda`
-  MODIFY `iddenda` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `iddenda` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `peminjam`
 --
 ALTER TABLE `peminjam`
-  MODIFY `idpeminjam` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `idpeminjam` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `petugas`
 --
 ALTER TABLE `petugas`
-  MODIFY `idpetugas` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idpetugas` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `transaksipeminjaman`
