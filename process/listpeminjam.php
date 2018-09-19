@@ -50,7 +50,7 @@ $sql.=" FROM peminjam";
 }
 
 $data = array();
-$no=1;
+$no=1+$requestData['start'];
 while( $row=mysqli_fetch_array($query) ) {  // preparing an array
     $nestedData=array(); 
 

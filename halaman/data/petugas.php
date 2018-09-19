@@ -29,13 +29,6 @@ if(isset($_GET['delete']) and $_GET['delete']!="") {
                                 <h4>Data Petugas</h4>
                             </div>
                         <div class="card-body">
-                            <div>
-                                <form method="post" action="">
-                                    <div class="form-group">
-                                        <input type="text" placeholder="Pencarian" class="form-control form-control-sm" name="qcari">
-                                    </div>
-                                </form>
-                            </div>
                             <div class="table-responsive">
                                 <table class="table table-striped table-hover table-sm">
                                     <thead>
@@ -63,7 +56,7 @@ if(isset($_GET['delete']) and $_GET['delete']!="") {
                                                         <td><?php echo $data['username']; ?></td>
                                                         <td align="center">
                                                             <a href="?petugasedit&&id=<?php echo $data['idpetugas']; ?>" class="btn btn-success btn-sm">Edit</a>
-                                                            <a href="?petugas&delete=<?php echo $data['idpetugas']; ?>" class="btn btn-danger btn-sm">Delete</a>
+                                                            <a href="?petugas&delete=<?php echo $data['idpetugas']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Ingin Hapus ?')">Delete</a>
                                                         </td>
                                                     </tr>  
                                                 <?php 
