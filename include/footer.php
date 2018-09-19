@@ -24,5 +24,8 @@
 	 <script src="<?php echo $url; ?>assets/js/charts-home.js"></script>
 	 <!-- Main File-->
 	 <script src="<?php echo $url; ?>assets/js/front.js"></script>
+	<script src="<?php echo $url; ?>assets/js/datatables.min.js" type="text/javascript"  ></script>
+	<script src="<?php echo $url; ?>assets/js/jquery.dataTables.js" type="text/javascript"  ></script>
+	
   </body>
 </html>

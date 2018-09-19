@@ -57,15 +57,15 @@
                                 </div>
                                 <div class="form-group col-lg-6">       
                                     <label>Tahun Buku</label>
-                                    <input type="text" placeholder="Tahun Buku" class="form-control form-control-sm" name="tahunbuku" required oninvalid="this.setCustomValidity('Tahun buku kosong !!')" oninput="this.setCustomValidity('')" value="<?php echo $data['tahun']; ?>">
+                                    <input type="number" placeholder="Tahun Buku" class="form-control form-control-sm" name="tahunbuku" required oninvalid="this.setCustomValidity('Tahun buku kosong !!')" oninput="this.setCustomValidity('')" value="<?php echo $data['tahun']; ?>" maxlenght="4" pattern="\d*">
                                 </div>
                                 <div class="form-group col-lg-6">       
                                     <label>Jumlah Buku</label>
-                                    <input type="text" placeholder="Jumlah Buku" class="form-control form-control-sm" name="jumlahbuku" required oninvalid="this.setCustomValidity('Jumlah buku kosong !!')" oninput="this.setCustomValidity('')" value="<?php echo $data['jumlahbuku']; ?>">
+                                    <input type="number" placeholder="Jumlah Buku" class="form-control form-control-sm" name="jumlahbuku" required oninvalid="this.setCustomValidity('Jumlah buku kosong !!')" oninput="this.setCustomValidity('')" value="<?php echo $data['jumlahbuku']; ?>">
                                 </div>
                                 <div class="form-group col-lg-6">       
                                     <label>Stok Buku</label>
-                                    <input type="text" placeholder="Stok Buku" class="form-control form-control-sm" name="stokbuku" required oninvalid="this.setCustomValidity('Stok buku kosong !!')" oninput="this.setCustomValidity('')" value="<?php echo $data['stok']; ?>">
+                                    <input type="number" placeholder="Stok Buku" class="form-control form-control-sm" name="stokbuku" required oninvalid="this.setCustomValidity('Stok buku kosong !!')" oninput="this.setCustomValidity('')" value="<?php echo $data['stok']; ?>">
                                 </div>
                                 <div class="form-group col-lg-6">
 								<?php if(isset($edit)) { ?>
