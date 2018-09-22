@@ -26,6 +26,34 @@
 	 <script src="<?php echo $url; ?>assets/js/front.js"></script>
 	<script src="<?php echo $url; ?>assets/js/datatables.min.js" type="text/javascript"  ></script>
 	<script src="<?php echo $url; ?>assets/js/jquery.dataTables.js" type="text/javascript"  ></script>
+		<script src="<?php echo $url; ?>assets/js/jquery-ui.js"></script>
+		<script src="<?php echo $url; ?>assets/js/jquery.maskMoney.min.js"></script>
 	
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$( function() {
+			var dateToday = new Date();
+			var dates = $("#tanggalpeminjaman, #tanggalpengembalian").datepicker({
+			  defaultDate: "+2d",
+			  dateFormat:'d/m/yy',
+			  changeMonth: true,
+			  numberOfMonths: 1,
+			  minDate: dateToday,
+			  onSelect: function(selectedDate) {
+				  var option = this.id == "tanggalpeminjaman" ? "minDate" : "maxDate",
+				  instance = $(this).data("datepicker"),
+				  date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
+				  dates.not(this).datepicker("option", option, date);
+			  }
+			});
+		  });
+		
+		$("#tanggalpengembalian").datepicker({
+			dateFormat:'d/m/yy'
+		});
+		
+		$('#formatuang').maskMoney({prefix:'Rp. ', thousands:'.', decimal:',', precision:0});
+	});
+	</script>
   </body>
 </html>

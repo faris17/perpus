@@ -17,12 +17,9 @@
 
 		if ($row > 0) {
 			session_start();
+			$_SESSION['id']=$data['idpetugas'];
 			$_SESSION['nama']=$data['namapetugas'];
-			$_SESSION['alamat']=$data['alamat'];
-			$_SESSION['jk']=$data['gender'];
-			$_SESSION['nohp']=$data['nomorhp'];
 			$_SESSION['username']=$username;
-			$_SESSION['password']=$password;
 			header("location:index.php");
 		}else{
 			header("location:login.php");

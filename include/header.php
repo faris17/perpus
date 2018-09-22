@@ -31,8 +31,12 @@
 		
 	<link rel="stylesheet" href="<?php echo $url; ?>assets/css/datatables.min.css" />
 	<link rel="stylesheet" href="<?php echo $url; ?>assets/css/jquery.dataTables.css" />
-	 <script src="<?php echo $url; ?>assets/vendor/jquery/jquery.min.js"></script>
+	 <script src="<?php echo $url; ?>assets/js/jquery-1.12.3.min.js"></script>
 	<script src="<?php echo $url; ?>assets/js/datatables.min.js" type="text/javascript"  ></script>
 	<script src="<?php echo $url; ?>assets/js/jquery.dataTables.js" type="text/javascript"  ></script>
 	
+	<link href="<?php echo $url; ?>assets/css/jquery-ui.css" rel="stylesheet">
+	<link href="<?php echo $url; ?>assets/css/jquery-ui.theme.css" rel="stylesheet">
+	  
+
   	</head>

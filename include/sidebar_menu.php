@@ -20,7 +20,7 @@
 					<a href="index.php"> <i class="icon-home"></i>Home</a>
 				</li>
 				<li class="<?php if(isset($menupeminjaman)) echo $menupeminjaman; ?>">
-					<a href="<?php echo $url; ?>?buku"> <i class="fas fa-sign-out-alt"></i>Peminjaman</a>
+					<a href="<?php echo $url; ?>?peminjaman"> <i class="fas fa-sign-out-alt"></i>Transaksi Peminjaman</a>
 				</li>
 				<li class="<?php if(isset($menupengembalian)) echo $menupengembalian; ?>">
 					<a href="<?php echo $url; ?>?buku"> <i class="fas fa-sign-in-alt"></i>Pengembalian</a>

@@ -74,6 +74,24 @@ include "include/koneksi.php";
 		include "halaman/form/peminjam.php"; //include ke data buku edit
 	}
 	
+	//Link ke Peminjaman
+	else if(isset($_GET['peminjaman'])) {
+		$menupeminjaman='active';
+		include "halaman/data/peminjaman.php"; //include ke data buku
+	}
+	else if(isset($_GET['peminjamandd'])) {
+		$menupeminjaman='active';
+		include "halaman/form/transaksipeminjaman.php"; //include ke data buku add
+	}
+	else if(isset($_GET['peminjamanedit'])) {
+		$menupeminjaman='active';
+		include "halaman/form/transaksipeminjaman.php"; //include ke data buku edit
+	}
+	else if(isset($_GET['pengembalian'])){
+		$menupengembalian='active';
+		include "halaman/form/transaksipengembalian.php"; //include ke data buku edit
+	}
+	
 	else  {
 		$menuhome='active';
 		include "halaman/data/home.php"; //link ke halaman depan
