@@ -11,6 +11,7 @@ $petugas 			= $_SESSION['id'];
 $keterlambatanhari = $_POST['keterlambatan'];
 $denda = str_replace(array('Rp','.'),'',$_POST['denda']);
 $jumlahkembali = $_POST['jumlahkembali'];
+$kodetransaksipeminjaman = $_POST['kodetransaksipeminjaman'];
 	
 $msg = "";
 
@@ -24,7 +25,7 @@ $msg = "";
 	$hasil = mysqli_fetch_array($query);
 	$idbuku = $hasil['idbuku'];
 
-$sql = "INSERT INTO transaksipengembalian (idtransaksipengembalian,tanggalkembali,denda,petugas_idpetugas,peminjam_idpeminjam,buku_idbuku,jumlahkembali,jumlahhariketerlambatan) VALUES ('','$tglkembali','$denda','$petugas','$idpeminjam','$idbuku','$jumlahkembali','$keterlambatanhari')";
+$sql = "INSERT INTO transaksipengembalian (idtransaksipengembalian,tanggalkembali,denda,petugas_idpetugas,peminjam_idpeminjam,buku_idbuku,jumlahkembali,jumlahhariketerlambatan, kodetransaksipeminjaman) VALUES ('','$tglkembali','$denda','$petugas','$idpeminjam','$idbuku','$jumlahkembali','$keterlambatanhari',$kodetransaksipeminjaman)";
 
 $query = mysqli_query($con,$sql);
 

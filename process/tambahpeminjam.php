@@ -5,10 +5,11 @@ $gender			= $_POST['gender'];
 $alamat			= $_POST['alamat'];
 $nohp			= $_POST['nohp'];
 $email			= $_POST['email'];
+$prodi			= $_POST['prodi'];
 
 $msg = "";
 
-$sql = "INSERT INTO peminjam (idpeminjam,kodepeminjam,namapeminjam,gender,alamat,nohp,email) VALUES ('','$kodepeminjam','$namapeminjam','$gender','$alamat','$nohp','$email')";
+$sql = "INSERT INTO peminjam (idpeminjam,kodepeminjam,namapeminjam,gender,alamat,nohp,email,prodi) VALUES ('','$kodepeminjam','$namapeminjam','$gender','$alamat','$nohp','$email','$prodi')";
 
 $query = mysqli_query($con,$sql);
 

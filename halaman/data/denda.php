@@ -18,7 +18,7 @@ if(isset($_GET['delete']) and $_GET['delete']!="") {
             <div class="container-fluid">
             <!-- Page Header-->
                 <header> 
-                    <a href="?dendaadd" class="btn btn-primary btn-sm">Tambah Denda</a>
+                   
                 </header>
                 <div class="row">
                     <div class="col-lg-12">
@@ -99,7 +99,6 @@ if(isset($_GET['delete']) and $_GET['delete']!="") {
                                                         <td><?php echo $data['nominal']; ?></td>
                                                         <td align="center">
                                                             <a href="?dendaedit&&id=<?php echo $data['iddenda']; ?>" class="btn btn-success btn-sm">Edit</a>
-                                                            <a href="?denda&delete=<?php echo $data['iddenda']; ?>" class="btn btn-danger btn-sm">Delete</a>
                                                         </td>
                                                     </tr>  
                                                 <?php 

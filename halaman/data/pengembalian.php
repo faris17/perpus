@@ -1,6 +1,6 @@
 <?php
 if(isset($_GET['delete']) and $_GET['delete']!="") {
-	include "process/deltransaksipeminjaman.php"; //link ke delete buku
+	include "process/deltransaksipengembalian.php"; //link ke delete buku
 }
 ?>
       <!-- Breadcrumb-->
@@ -10,7 +10,7 @@ if(isset($_GET['delete']) and $_GET['delete']!="") {
                     <li class="breadcrumb-item">
                         <a href="index.php">Home</a>
                     </li>
-                    <li class="breadcrumb-item active">Peminjaman</li>
+                    <li class="breadcrumb-item active">Pengembalian</li>
                 </ul>
             </div>
         </div>
@@ -18,7 +18,7 @@ if(isset($_GET['delete']) and $_GET['delete']!="") {
             <div class="container-fluid">
             <!-- Page Header-->
                 <header> 
-                    <a href="?peminjamandd" class="btn btn-primary btn-sm">Pinjam Buku</a>
+                    <!-- <a href="?pengembalianadd" class="btn btn-primary btn-sm">Kembalikan Buku</a> -->
                 </header>
                 <div class="row">
                     <div class="col-lg-12">
@@ -26,15 +26,7 @@ if(isset($_GET['delete']) and $_GET['delete']!="") {
                        
                         <div class="card">
                             <div class="card-header d-flex align-items-center">
-								<form method="post" action="<?php echo $url; ?>pencarian">
-									Belum Kembalikan Buku <select name="prodi">
-										<option value="Biologi" <?php if(isset($data['prodi']) and $data['prodi']=='Biologi') echo "selected='selected'" ; ?>>Biologi</option>
-                                        <option value="Matematika" <?php if(isset($data['prodi']) and $data['prodi']=='Matematika') echo "selected='selected'" ; ?>>Matematika</option>
-                                        <option value="Fisika" <?php if(isset($data['prodi']) and $data['prodi']=='Fisika') echo "selected='selected'" ; ?>>Fisika</option>
-                                        <option value="Kimia" <?php if(isset($data['prodi']) and $data['prodi']=='Kimia') echo "selected='selected'" ; ?>>Kimia</option>
-									</select>
-									<input type="submit" name="cari" value="Cari" />
-								</form>
+                                <h4>Data Pengembalian</h4>
                             </div>
                         <div class="card-body">
                             <div>
@@ -45,10 +37,11 @@ if(isset($_GET['delete']) and $_GET['delete']!="") {
                                                     <th>#</th>
                                                     <th>Nim</th>
                                                     <th>Nama </th>
-                                                    <th>PRODI</th>
-                                                    <th>Tanggal Kembali</th>
+                                                    <th>Tgl Kembali</th>
                                                     <th>Buku</th>
                                                     <th>Jumlah</th>
+                                                    <th>Telat</th>
+                                                    <th>Denda</th>
                                                     <th width="150px"><center>Action</center></th>
                                                 </tr>
                                             </thead>
@@ -71,9 +64,8 @@ if(isset($_GET['delete']) and $_GET['delete']!="") {
 		var dataTable = $('#datatable').DataTable( {
                     "processing": true,
                     "serverSide": true,
-					"searching":false,
                     "ajax":{
-                        url :"process/listpeminjaman.php", // json datasource
+                        url :"process/listpengembalian.php", // json datasource
                         type: "post",  // method  , by default get
                         error: function(){  // error handling
                             $(".lookup-error").html("");

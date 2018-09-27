@@ -51,6 +51,15 @@
                                     <label>Kode Peminjam</label>
                                     <input type="text" placeholder="Kode Peminjam" class="form-control form-control-sm" name="kodepeminjam" required oninvalid="this.setCustomValidity('Kode peminjam kosong !!')" oninput="this.setCustomValidity('')" value="<?php echo $data['kodepeminjam']; ?>">
                                 </div>
+								<div class="form-group col-lg-6">
+                                    <label>Program Studi</label>
+									 <select class="form-control form-control-sm" name="prodi">
+										<option value="Biologi" <?php if(isset($data['prodi']) and $data['prodi']=='Biologi') echo "selected='selected'" ; ?>>Biologi</option>
+                                        <option value="Matematika" <?php if(isset($data['prodi']) and $data['prodi']=='Matematika') echo "selected='selected'" ; ?>>Matematika</option>
+                                        <option value="Fisika" <?php if(isset($data['prodi']) and $data['prodi']=='Fisika') echo "selected='selected'" ; ?>>Fisika</option>
+                                        <option value="Kimia" <?php if(isset($data['prodi']) and $data['prodi']=='Kimia') echo "selected='selected'" ; ?>>Kimia</option>
+									</select>
+                                </div>
                                 <div class="form-group col-lg-6">       
                                     <label>Nama Peminjam</label>
                                     <input type="text" placeholder="Nama Peminjam" class="form-control form-control-sm" name="namapeminjam" required oninvalid="this.setCustomValidity('Nama peminjam kosong !!')" oninput="this.setCustomValidity('')" value="<?php echo $data['namapeminjam']; ?>">
@@ -58,9 +67,9 @@
                                 <div class="form-group col-lg-6">       
                                     <label>Jenis Kelamin</label>
                                     <select class="form-control form-control-sm" name="gender">
-                                        <option value="<?php echo $data['gender']; ?>"><?php echo $data['gender']; ?></option>
-                                        <option value="pria">Laki - laki</option>
-                                        <option value="wanita">Perempuan</option>
+                                        
+                                        <option value="pria" <?php if(isset($data['gender']) and $data['gender']=='pria') echo "selected='selected'" ; ?>>Laki - laki</option>
+                                        <option value="wanita" <?php if(isset($data['gender']) and $data['gender']=='wanita') echo "selected='selected'" ; ?>>Perempuan</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-lg-6">       

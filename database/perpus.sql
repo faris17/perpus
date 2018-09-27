@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 19, 2018 at 08:05 AM
+-- Generation Time: Sep 27, 2018 at 10:09 AM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -42,10 +42,9 @@ CREATE TABLE `buku` (
 --
 
 INSERT INTO `buku` (`idbuku`, `kodebuku`, `namabuku`, `tahun`, `jumlahbuku`, `stok`) VALUES
-(6, 'BIO123', 'Menyelami CodeIgniter', 2013, 10, 10),
-(7, 'ARC142', 'Sistem Manajemen Linux', 2016, 4, 4),
-(8, 'TIK089', 'Analisis Datawarehouse', 2011, 3, 3),
-(9, 'TIK010', 'Database Management', 2014, 1, 1),
+(7, 'ARC142', 'Sistem Manajemen Linux', 2016, 4, 2),
+(8, 'TIK089', 'Analisis Datawarehouse', 2011, 3, 2),
+(9, 'TIK010', 'Database Management', 2014, 1, 0),
 (10, 'SIE100', 'Teknik Penggunaan Excel', 2003, 1, 1),
 (11, 'TIN723', 'Javascript For Kids', 2017, 4, 4),
 (12, 'TIN724', 'Javascript Tips dan Trik', 2016, 3, 3),
@@ -71,7 +70,7 @@ CREATE TABLE `denda` (
 --
 
 INSERT INTO `denda` (`iddenda`, `lamadenda`, `nominal`) VALUES
-(2, 1, '1000');
+(2, 1, '2000');
 
 -- --------------------------------------------------------
 
@@ -86,18 +85,19 @@ CREATE TABLE `peminjam` (
   `gender` enum('pria','wanita') DEFAULT NULL,
   `alamat` text,
   `nohp` varchar(12) DEFAULT NULL,
-  `email` varchar(20) DEFAULT NULL
+  `email` varchar(20) DEFAULT NULL,
+  `prodi` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `peminjam`
 --
 
-INSERT INTO `peminjam` (`idpeminjam`, `kodepeminjam`, `namapeminjam`, `gender`, `alamat`, `nohp`, `email`) VALUES
-(1, '321', 'Abdul Faris', 'pria', 'Jl. merapi', '1231048', 'fzain417@gmail.com'),
-(3, '201832001', 'Beti', 'wanita', 'Ambna', '08124556123', 'beti@gmail.com'),
-(4, '201832002', 'Alex karobu', 'pria', 'Belakang Golkar', '085254444688', 'alex@gmail.com'),
-(5, '201832003', 'Risan Asyri', 'wanita', 'Borobudur', '081246645455', 'fzain712@gmail.com');
+INSERT INTO `peminjam` (`idpeminjam`, `kodepeminjam`, `namapeminjam`, `gender`, `alamat`, `nohp`, `email`, `prodi`) VALUES
+(1, '321', 'Abdul Faris', 'pria', 'Jl. merapi', '1231048', 'fzain417@gmail.com', NULL),
+(3, '201832001', 'Beti', 'wanita', 'Ambna', '08124556123', 'beti@gmail.com', 'Matematika'),
+(4, '201832002', 'Alex karobu', 'pria', 'Belakang Golkar', '085254444688', 'alex@gmail.com', NULL),
+(5, '201832003', 'Risan Asyri', 'wanita', 'Borobudur', '081246645455', 'fzain712@gmail.com', NULL);
 
 -- --------------------------------------------------------
 
@@ -133,11 +133,11 @@ CREATE TABLE `transaksipeminjaman` (
   `tanggalpeminjaman` date DEFAULT NULL,
   `tanggalpemulangan` date DEFAULT NULL,
   `keterangan` text,
-  `lamapinjaman` int(3) DEFAULT NULL,
   `peminjam_idpeminjam` int(3) NOT NULL,
   `buku_idbuku` int(3) NOT NULL,
   `petugas_idpetugas` int(3) NOT NULL,
-  `jumlahpinjaman` int(1) DEFAULT NULL
+  `jumlahpinjaman` int(1) DEFAULT NULL,
+  `kodesipeminjam` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -164,12 +164,26 @@ CREATE TABLE `transaksipengembalian` (
   `peminjam_idpeminjam` int(3) NOT NULL,
   `buku_idbuku` int(3) NOT NULL,
   `jumlahkembali` int(3) DEFAULT NULL,
-  `jumlahhariketerlambatan` int(3) DEFAULT NULL
+  `jumlahhariketerlambatan` int(3) DEFAULT NULL,
+  `kodetransaksipeminjaman` int(3) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `transaksipengembalian`
+--
+
+INSERT INTO `transaksipengembalian` (`idtransaksipengembalian`, `tanggalkembali`, `denda`, `petugas_idpetugas`, `peminjam_idpeminjam`, `buku_idbuku`, `jumlahkembali`, `jumlahhariketerlambatan`, `kodetransaksipeminjaman`) VALUES
+(4, '2018-09-22', ' 1000', 3, 3, 10, 1, 1, 1);
 
 --
 -- Triggers `transaksipengembalian`
 --
+DELIMITER $$
+CREATE TRIGGER `mengembalikanstok` AFTER DELETE ON `transaksipengembalian` FOR EACH ROW BEGIN
+UPDATE buku set buku.stok = buku.stok-old.jumlahkembali WHERE buku.idbuku = old.buku_idbuku;
+END
+$$
+DELIMITER ;
 DELIMITER $$
 CREATE TRIGGER `transaksipengembalian_AFTER_INSERT` AFTER INSERT ON `transaksipengembalian` FOR EACH ROW BEGIN
 UPDATE buku set buku.stok = buku.stok+new.jumlahkembali WHERE buku.idbuku = new.buku_idbuku;
@@ -262,7 +276,7 @@ ALTER TABLE `transaksipeminjaman`
 -- AUTO_INCREMENT for table `transaksipengembalian`
 --
 ALTER TABLE `transaksipengembalian`
-  MODIFY `idtransaksipengembalian` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `idtransaksipengembalian` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables

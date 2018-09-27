@@ -8,10 +8,11 @@
 	$alamat			= $_POST['alamat'];
 	$nohp			= $_POST['nohp'];
 	$email			= $_POST['email'];
+	$prodi			= $_POST['prodi'];
 
 	$msg = "";
 
-	$sql_edit = "UPDATE peminjam SET kodepeminjam='$kodepeminjam', namapeminjam='$namapeminjam', gender='$gender', alamat='$alamat', nohp='$nohp', email='$email' WHERE idpeminjam='$idpeminjam'";
+	$sql_edit = "UPDATE peminjam SET kodepeminjam='$kodepeminjam', namapeminjam='$namapeminjam', gender='$gender', alamat='$alamat', nohp='$nohp', email='$email' , prodi = '$prodi' WHERE idpeminjam='$idpeminjam'";
 
 	$query = mysqli_query($con,$sql_edit) or die(mysqli_error());
 

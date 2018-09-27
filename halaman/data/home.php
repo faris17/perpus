@@ -1,60 +1,61 @@
+<?php
+//peminjaman hari ini
+$tgl = date('Y-m-d');
+$sql = "SELECT COUNT(*) AS jumlahpinjaman FROM transaksipeminjaman WHERE tanggalpeminjaman='".$tgl."'";
+
+$query = mysqli_query($con,$sql);
+$hasil= mysqli_fetch_row($query);
+
+//pengembalian hari ini
+$tglkembali = date('Y-m-d');
+$sqlkembali = "SELECT COUNT(*) AS jumlahkembali FROM transaksipengembalian WHERE tanggalkembali='".$tglkembali."'";
+
+$querykembali = mysqli_query($con,$sqlkembali);
+$hasilkembali= mysqli_fetch_row($querykembali);
+?>
 <section class="dashboard-counts section-padding">
 		  <div class="container-fluid">
 			 <div class="row">
+			 <div class="col-md-12">
+				<h2><?php echo date("D, d/m/Y"); ?></h2>
+				<br>
+			 </div>
 				<!-- Count item widget-->
-				<div class="col-xl-2 col-md-4 col-6">
+				<div class="col-xl-4 col-md-4 col-6">
 				  <div class="wrapper count-title d-flex">
-					 <div class="icon"><i class="icon-user"></i></div>
-					 <div class="name"><strong class="text-uppercase">New Clients</strong><span>Last 7 days</span>
-						<div class="count-number">25</div>
+					 <div class="icon"><i class="fa fa-book"></i></div>
+					 <div class="name"><strong class="text-uppercase">Jumlah Pinjaman Hari Ini</strong>
+						<div class="count-number">
+							<?php echo $hasil[0]; ?>
+						</div>
 					 </div>
 				  </div>
 				</div>
-				<!-- Count item widget-->
-				<div class="col-xl-2 col-md-4 col-6">
+				
+				<div class="col-xl-4 col-md-4 col-6">
 				  <div class="wrapper count-title d-flex">
-					 <div class="icon"><i class="icon-padnote"></i></div>
-					 <div class="name"><strong class="text-uppercase">Work Orders</strong><span>Last 5 days</span>
-						<div class="count-number">400</div>
+					 <div class="icon"><i class="fa fa-undo"></i></div>
+					 <div class="name"><strong class="text-uppercase">Jumlah Pengembalian Hari Ini</strong>
+						<div class="count-number">
+							<?php echo $hasilkembali[0]; ?>
+						</div>
 					 </div>
 				  </div>
 				</div>
-				<!-- Count item widget-->
-				<div class="col-xl-2 col-md-4 col-6">
+				<br><br><br>
+				<br><br>
+				<div class="col-md-8">
 				  <div class="wrapper count-title d-flex">
-					 <div class="icon"><i class="icon-check"></i></div>
-					 <div class="name"><strong class="text-uppercase">New Quotes</strong><span>Last 2 months</span>
-						<div class="count-number">342</div>
+					
+					 <div class="name"><strong class="text-uppercase"><u>Perpustakaan FMIPA UNIPA</u></strong>
+					<p>
+					Adalah perpustakaan yang menyediakan berbagai buku untuk referensi mahasiswa.
+					</p>
 					 </div>
 				  </div>
 				</div>
-				<!-- Count item widget-->
-				<div class="col-xl-2 col-md-4 col-6">
-				  <div class="wrapper count-title d-flex">
-					 <div class="icon"><i class="icon-bill"></i></div>
-					 <div class="name"><strong class="text-uppercase">New Invoices</strong><span>Last 2 days</span>
-						<div class="count-number">123</div>
-					 </div>
-				  </div>
-				</div>
-				<!-- Count item widget-->
-				<div class="col-xl-2 col-md-4 col-6">
-				  <div class="wrapper count-title d-flex">
-					 <div class="icon"><i class="icon-list"></i></div>
-					 <div class="name"><strong class="text-uppercase">Open Cases</strong><span>Last 3 months</span>
-						<div class="count-number">92</div>
-					 </div>
-				  </div>
-				</div>
-				<!-- Count item widget-->
-				<div class="col-xl-2 col-md-4 col-6">
-				  <div class="wrapper count-title d-flex">
-					 <div class="icon"><i class="icon-list-1"></i></div>
-					 <div class="name"><strong class="text-uppercase">New Cases</strong><span>Last 7 days</span>
-						<div class="count-number">70</div>
-					 </div>
-				  </div>
-				</div>
+				
+				
 			 </div>
 		  </div>
 		</section>

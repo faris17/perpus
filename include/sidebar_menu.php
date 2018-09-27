@@ -23,7 +23,7 @@
 					<a href="<?php echo $url; ?>?peminjaman"> <i class="fas fa-sign-out-alt"></i>Transaksi Peminjaman</a>
 				</li>
 				<li class="<?php if(isset($menupengembalian)) echo $menupengembalian; ?>">
-					<a href="<?php echo $url; ?>?buku"> <i class="fas fa-sign-in-alt"></i>Pengembalian</a>
+					<a href="<?php echo $url; ?>?pengembalianlist"> <i class="fas fa-sign-in-alt"></i>Pengembalian</a>
 				</li>
 				<li class="<?php if(isset($menupeminjam)) echo $menupeminjam; ?>">
 					<a href="<?php echo $url; ?>?peminjam"> <i class="fa fa-users"></i>Peminjam</a>

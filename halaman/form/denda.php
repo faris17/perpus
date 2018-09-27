@@ -22,10 +22,6 @@
             </li>
 			<?php if(isset($edit)) { ?>
             <li class="breadcrumb-item active">Edit Denda</li>
-			<?php } 
-			else {
-			?>
-			<li class="breadcrumb-item active">Tambah Denda</li>
 			<?php } ?>
         </ul>
     </div>
@@ -58,6 +54,7 @@
                                 </div>
                                 <div class="form-group col-lg-6">
 								<?php if(isset($edit)) { ?>
+								 <input type="hidden" value="<?php echo $data['iddenda'];?>" name="iddenda">
 								 <input type="submit" class="btn btn-info" name="update" value="edit">
 								<?php } 
 								else {

@@ -14,7 +14,7 @@
 	$tgl_kembali =  explode("-", $data['tanggalpemulangan']);
 	$date1 =  mktime(0, 0, 0, $tgl_sekarang[1],$tgl_sekarang[2],$tgl_sekarang[0]);
 	$date2 =  mktime(0, 0, 0, $tgl_kembali[1],$tgl_kembali[2],$tgl_kembali[0]);
-	$interval =($date2 - $date1)/(3600*24);
+	$interval =($date2 - $date1)/(3600*24) * -1;
 	
 	//Menghitung denda
 	$querydenda = mysqli_query($con,"SELECT nominal FROM denda WHERE lamadenda='1'") or die(mysqli_error($con));
@@ -57,12 +57,13 @@
             <?php include "halaman/notifikasi.php"; ?>
                 <div class="card">
                     <div class="card-header d-flex align-items-center">
-                        <h4>Tambah Pengembalian</h4>
+                        <h4>Pengembalian Pinjaman Dari Tanggal <?php echo date('d/m/Y',strtotime($data['tanggalpeminjaman']))." s/d ".date('d/m/Y',strtotime($data['tanggalpemulangan'])); ?></h4>
                     </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-12">
                             <form method="post" action="">
+							<input type="hidden" name="kodetransaksipeminjaman" value="<?php echo $data['idtransaksipeminjaman']; ?>" />
 							<div class="form-group col-lg-6">       
                                     <label>Denda</label>
                                     <input type="text" id="formatuang" class="form-control form-control-sm" name="denda" value="<?php echo $totalhargadenda; ?>" >

@@ -34,7 +34,7 @@
       <div class="container">
         <div class="form-outer text-center d-flex align-items-center">
           <div class="form-inner">
-            <div class="logo "><span>Login Perpustakaan </span><strong class="text-primary"> Biologi</strong></div>
+            <div class="logo "><span>Perpustakaan </span><strong class="text-primary"> FMIPA UNIPA</strong></div>
             <form method="post" action="proses.php" class="text-left form-validate">
               <div class="form-group-material">
                 <input autofocus id="login-username" type="text" name="loginUsername" required data-msg="Username tidak boleh kosong" class="input-material">

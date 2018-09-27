@@ -1,7 +1,7 @@
 <?php 
 
 
-	$iddenda	= $_GET['iddenda'];
+	$iddenda	= $_POST['iddenda'];
 	$lamadenda	= $_POST['lamadenda'];
 	$nominal	= $_POST['nominal'];
 	

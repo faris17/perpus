@@ -8743,7 +8743,7 @@
 		// set
 		if ( typeof order === 'number' ) {
 			// Simple column / direction passed in
-			order = [ [ order, dir ] ];
+			order = [[ order, dir ]];
 		}
 		else if ( ! $.isArray( order[0] ) ) {
 			// Arguments passed in (list of 1D arrays)

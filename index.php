@@ -51,10 +51,6 @@ include "include/koneksi.php";
 		$menudenda='active';
 		include "halaman/data/denda.php"; //include ke data denda
 	}
-	else if(isset($_GET['dendaadd'])) {
-		$menudenda='active';
-		include "halaman/form/denda.php"; //include ke data denda
-	}
 	else if(isset($_GET['dendaedit'])) {
 		$menudenda='active';
 		include "halaman/form/denda.php"; //include ke data denda
@@ -87,6 +83,12 @@ include "include/koneksi.php";
 		$menupeminjaman='active';
 		include "halaman/form/transaksipeminjaman.php"; //include ke data buku edit
 	}
+	
+	//link ke pengembalian
+	else if(isset($_GET['pengembalianlist'])){
+		$menupengembalian='active';
+		include "halaman/data/pengembalian.php"; //include ke data buku edit
+	}
 	else if(isset($_GET['pengembalian'])){
 		$menupengembalian='active';
 		include "halaman/form/transaksipengembalian.php"; //include ke data buku edit
@@ -94,6 +96,7 @@ include "include/koneksi.php";
 	
 	else  {
 		$menuhome='active';
+		include"process/proseshome.php"; 
 		include "halaman/data/home.php"; //link ke halaman depan
 	}
 	//endhalaman
