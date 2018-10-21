@@ -57,11 +57,15 @@
                                 </div>
                                 <div class="form-group col-lg-6">       
                                     <label>Tanggal Peminjaman</label>
-                                    <input type="text"  class="form-control form-control-sm" name="tanggalpeminjaman"  id="tanggalpeminjaman" value="<?php echo date('d/m/Y',strtotime($data['tanggalpeminjaman'])); ?>">
+                                    <input type="text"  class="form-control form-control-sm" name="tanggalpeminjaman"  id="tanggalpeminjaman" value="<?php if($data['tanggalpeminjaman'] !="") echo date('d/m/Y',strtotime($data['tanggalpeminjaman'])); else echo date('d/m/Y',strtotime(date('Y-m-d'))); ?>">
                                 </div>
-								<div class="form-group col-lg-6">       
+								<div class="form-group col-lg-6">      
+								<?php
+								$tgl1 = date('Y-m-d');// pendefinisian tanggal awal
+								$tgl2 = date('Y-m-d', strtotime('+7 days', strtotime($tgl1))); //operasi penjumlahan tanggal sebanyak 6 hari
+								?>
                                     <label>Tanggal Pengembalian</label>
-                                    <input type="text"  class="form-control form-control-sm" name="tanggalpengembalian"   id="tanggalpengembalian" value="<?php echo date('d/m/Y',strtotime($data['tanggalpemulangan'])); ?>">
+                                    <input type="text"  class="form-control form-control-sm" name="tanggalpengembalian"   id="tanggalpengembalian" value="<?php if($data['tanggalpemulangan'] !="") echo date('d/m/Y',strtotime($data['tanggalpemulangan'])); else echo date('d/m/Y',strtotime($tgl2)); ?>">
                                 </div>
                                 <div class="form-group col-lg-6">       
                                     <label>Jumlah Peminjaman</label>

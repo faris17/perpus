@@ -19,23 +19,13 @@ if(isset($_GET['delete']) and $_GET['delete']!="") {
             <!-- Page Header-->
                 <header> 
                     <a href="?peminjamandd" class="btn btn-primary btn-sm">Pinjam Buku</a>
+                    <a href="?belumkembalikan" class="btn btn-warning btn-sm">Belum Kembalikan Buku</a>
                 </header>
                 <div class="row">
                     <div class="col-lg-12">
 					<?php include "halaman/notifikasi.php"; ?>
                        
                         <div class="card">
-                            <div class="card-header d-flex align-items-center">
-								<form method="post" action="<?php echo $url; ?>pencarian">
-									Belum Kembalikan Buku <select name="prodi">
-										<option value="Biologi" <?php if(isset($data['prodi']) and $data['prodi']=='Biologi') echo "selected='selected'" ; ?>>Biologi</option>
-                                        <option value="Matematika" <?php if(isset($data['prodi']) and $data['prodi']=='Matematika') echo "selected='selected'" ; ?>>Matematika</option>
-                                        <option value="Fisika" <?php if(isset($data['prodi']) and $data['prodi']=='Fisika') echo "selected='selected'" ; ?>>Fisika</option>
-                                        <option value="Kimia" <?php if(isset($data['prodi']) and $data['prodi']=='Kimia') echo "selected='selected'" ; ?>>Kimia</option>
-									</select>
-									<input type="submit" name="cari" value="Cari" />
-								</form>
-                            </div>
                         <div class="card-body">
                             <div>
 								<div class="table-responsive">
@@ -71,7 +61,10 @@ if(isset($_GET['delete']) and $_GET['delete']!="") {
 		var dataTable = $('#datatable').DataTable( {
                     "processing": true,
                     "serverSide": true,
-					"searching":false,
+					"iDisplayLength": 10,
+					"bInfo": false,
+					"iDisplayStart": 0,
+					"searching":true,
                     "ajax":{
                         url :"process/listpeminjaman.php", // json datasource
                         type: "post",  // method  , by default get

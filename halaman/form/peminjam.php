@@ -54,15 +54,21 @@
 								<div class="form-group col-lg-6">
                                     <label>Program Studi</label>
 									 <select class="form-control form-control-sm" name="prodi">
+										<option value="Matematika" <?php if(isset($data['prodi']) and $data['prodi']=='Matematika') echo "selected='selected'" ; ?>>Matematika</option>
 										<option value="Biologi" <?php if(isset($data['prodi']) and $data['prodi']=='Biologi') echo "selected='selected'" ; ?>>Biologi</option>
-                                        <option value="Matematika" <?php if(isset($data['prodi']) and $data['prodi']=='Matematika') echo "selected='selected'" ; ?>>Matematika</option>
-                                        <option value="Fisika" <?php if(isset($data['prodi']) and $data['prodi']=='Fisika') echo "selected='selected'" ; ?>>Fisika</option>
                                         <option value="Kimia" <?php if(isset($data['prodi']) and $data['prodi']=='Kimia') echo "selected='selected'" ; ?>>Kimia</option>
+                                        <option value="Fisika" <?php if(isset($data['prodi']) and $data['prodi']=='Fisika') echo "selected='selected'" ; ?>>Fisika</option>
+                                        <option value="Pend.Matematika" <?php if(isset($data['prodi']) and $data['prodi']=='Pend.Matematika') echo "selected='selected'" ; ?>>Pend.Matematika</option>
+                                        <option value="Pend.Biologi" <?php if(isset($data['prodi']) and $data['prodi']=='Pend.Biologi') echo "selected='selected'" ; ?>>Pend.Biologi</option>
+                                        <option value="Pend.Kimia" <?php if(isset($data['prodi']) and $data['prodi']=='Pend.Kimia') echo "selected='selected'" ; ?>>Pend.Kimia</option>
+                                        <option value="Pend.Fisika" <?php if(isset($data['prodi']) and $data['prodi']=='Pend.Fisika') echo "selected='selected'" ; ?>>Pend.Fisika</option>
+                                        <option value="Dosen/Staf" <?php if(isset($data['prodi']) and $data['prodi']=='Dosen/Staf') echo "selected='selected'" ; ?>>Dosen/Staf</option>
+                                       
 									</select>
                                 </div>
                                 <div class="form-group col-lg-6">       
                                     <label>Nama Peminjam</label>
-                                    <input type="text" placeholder="Nama Peminjam" class="form-control form-control-sm" name="namapeminjam" required oninvalid="this.setCustomValidity('Nama peminjam kosong !!')" oninput="this.setCustomValidity('')" value="<?php echo $data['namapeminjam']; ?>">
+                                    <input type="text" placeholder="Nama Peminjam" class="form-control form-control-sm" name="namapeminjam"  oninvalid="this.setCustomValidity('Nama peminjam kosong !!')" oninput="this.setCustomValidity('')" value="<?php echo $data['namapeminjam']; ?>">
                                 </div>
                                 <div class="form-group col-lg-6">       
                                     <label>Jenis Kelamin</label>

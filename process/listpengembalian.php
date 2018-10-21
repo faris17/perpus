@@ -28,14 +28,8 @@ $totalFiltered = $totalData;  // when there is no search parameter then total nu
 if( !empty($requestData['search']['value']) ) {
     // if there is a search parameter
     $sql = "SELECT * ";
-$sql.=" FROM peminjam, buku, transaksipengembalian";
-    $sql.=" WHERE kodepeminjam LIKE '".$requestData['search']['value']."%' ";    // $requestData['search']['value'] contains search parameter
-    $sql.=" OR namapeminjam LIKE '".$requestData['search']['value']."%' ";
-    $sql.=" OR namabuku LIKE '".$requestData['search']['value']."%' ";
-    $sql.=" OR tanggalkembali LIKE '".$requestData['search']['value']."%' ";
-    $sql.=" OR jumlahhariketerlambatan LIKE '".$requestData['search']['value']."%' ";
-	
-	$sql.=" AND idbuku=buku_idbuku and idpeminjam=peminjam_idpeminjam";
+	$sql.=" FROM peminjam, buku, transaksipengembalian";
+	$sql.=" WHERE idbuku=buku_idbuku and idpeminjam=peminjam_idpeminjam";
 	$requestData['search']['value']."%' ";
 	
     $query=mysqli_query($con, $sql) or die("listpeminjam.php: get PO");
@@ -69,7 +63,7 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
     $nestedData[] = $row["jumlahhariketerlambatan"];
     $nestedData[] = $row["denda"];
     $nestedData[] = '<td><center>
-                         <a href="?pengembalian&delete='.$row['idtransaksipengembalian'].'"  data-toggle="tooltip" title="Hapus" class="btn btn-sm btn-danger"> <i class="fa fa-times"></i> </a>                      
+                         <a href="?pengembalianlist&delete='.$row['idtransaksipengembalian'].'"  data-toggle="tooltip" title="Hapus" class="btn btn-sm btn-danger"> <i class="fa fa-times"></i> </a>                      
                          </center></td>';        
     
     $data[] = $nestedData;

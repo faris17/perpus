@@ -10,7 +10,7 @@
 	 	<!-- Bootstrap CSS-->
 	 	<link rel="stylesheet" href="<?php echo $url; ?>assets/vendor/bootstrap/css/bootstrap.min.css">
 	 	<!-- Font Awesome CSS-->
-	 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+	 	<link rel="stylesheet" href="<?php echo $url;?>assets/css/fontawesome-all.css">
 	 	<!-- Fontastic Custom icon font-->
 	 	<link rel="stylesheet" href="<?php echo $url; ?>assets/css/fontastic.css">
 	 	<!-- Google fonts - Roboto -->
@@ -37,6 +37,11 @@
 	
 	<link href="<?php echo $url; ?>assets/css/jquery-ui.css" rel="stylesheet">
 	<link href="<?php echo $url; ?>assets/css/jquery-ui.theme.css" rel="stylesheet">
-	  
+	
+	<script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js" type="text/javascript"  ></script>
+	<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js" type="text/javascript"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js" type="text/javascript"  ></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js" type="text/javascript"  ></script>
+	<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.html5.min.js" type="text/javascript"  ></script>
 
   	</head>

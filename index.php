@@ -84,6 +84,12 @@ include "include/koneksi.php";
 		include "halaman/form/transaksipeminjaman.php"; //include ke data buku edit
 	}
 	
+	//Link Yang Belum Kembalikan
+	else if(isset($_GET['belumkembalikan'])) {
+		$menupeminjaman='active';
+		include "halaman/data/peminjamanprodi.php"; //include ke data buku
+	}
+	
 	//link ke pengembalian
 	else if(isset($_GET['pengembalianlist'])){
 		$menupengembalian='active';

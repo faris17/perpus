@@ -5,20 +5,17 @@
 		$username	= $_POST['loginUsername'];
 		$password	= md5($_POST['loginPassword']);
 
-		$sql = "select username,password from petugas where username='$username' and password='$password'";
+		$sql = "select idpetugas, username,password from petugas where username='$username' and password='$password'";
 
 		$query = mysqli_query($con,$sql) or die(mysql_error());
 
 		$row = mysqli_num_rows($query);
 
-		// untuk mendapatkan data session
-		$select = mysqli_query($con,"select * from petugas");
-		$data = mysqli_fetch_array($select);
-
+		$data = mysqli_fetch_row($query);
 		if ($row > 0) {
 			session_start();
-			$_SESSION['id']=$data['idpetugas'];
-			$_SESSION['nama']=$data['namapetugas'];
+			$_SESSION['id']=$data[0];
+			$_SESSION['nama']=$data[1];
 			$_SESSION['username']=$username;
 			header("location:index.php");
 		}else{

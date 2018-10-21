@@ -12,12 +12,12 @@
 		$msg = "Data berhasil dihapus";
 		$_SESSION['msg']=$msg;
 		
-		header("location:?peminjam");
+		// header("location:?peminjam");
 	}else{
 		$kategorimsg ="error";
 		$msg = "Data gagal dihapus";
 		$_SESSION['msg']=$msg;
-		header("location:?peminjam");
+		// header("location:?peminjam");
 	}
 
 	

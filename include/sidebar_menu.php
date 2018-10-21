@@ -4,7 +4,7 @@
 		  <!-- Sidebar Header    -->
 		  <div class="sidenav-header d-flex align-items-center justify-content-center">
 			 <!-- User Info-->
-			 <div class="sidenav-header-inner text-center"><img src="<?php echo $url; ?>assets/img/avatar-1.jpg" alt="person" class="img-fluid rounded-circle">
+			 <div class="sidenav-header-inner text-center"><img src="<?php echo $url; ?>assets/img/profil.png" alt="person" class="img-fluid rounded-circle">
 				<h2 class="h5"><?php echo $_SESSION['nama']; ?></h2><span>Perpustakaan Sederhana</span>
 			 </div>
 			 <!-- Small Brand information, appears on minimized sidebar-->

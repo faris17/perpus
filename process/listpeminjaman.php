@@ -26,15 +26,11 @@ $totalFiltered = $totalData;  // when there is no search parameter then total nu
 
 
 if( !empty($requestData['search']['value']) ) {
-    // if there is a search parameter
-    $sql = "SELECT * ";
+   // if there is a search parameter
+   $sql = "SELECT * ";
 $sql.=" FROM transaksipeminjaman,peminjam, buku";
 	$sql.=" WHERE idbuku=buku_idbuku and idpeminjam=peminjam_idpeminjam";
-    $sql.=" AND kodepeminjam LIKE '".$requestData['search']['value']."%' ";    // $requestData['search']['value'] contains search parameter
-    $sql.=" OR namapeminjam LIKE '".$requestData['search']['value']."%' ";
-    $sql.=" OR namabuku LIKE '".$requestData['search']['value']."%' ";
-    $sql.=" OR tanggalpeminjaman LIKE '".$requestData['search']['value']."%' ";
-    $sql.=" OR tanggalpemulangan LIKE '".$requestData['search']['value']."%' ";
+    $sql.=" AND namapeminjam LIKE '".$requestData['search']['value']."%' ";    
 	
 	
 	$requestData['search']['value']."%' ";
@@ -77,12 +73,12 @@ while( $row=mysqli_fetch_array($query) ) {  // preparing an array
 	if($hasilquery['nilai'] > 0){
 		$nestedData[] = '<td>
                      <a href="?peminjamanedit&id='.$row['idtransaksipeminjaman'].'"  data-toggle="tooltip" title="Edit" class="btn btn-sm btn-warning"> <i class="fa fa-edit"></i> </a>
-                     <a href="?peminjaman&delete='.$row['idtransaksipeminjaman'].'"  data-toggle="tooltip" title="Hapus" class="btn btn-sm btn-danger"> <i class="fa fa-times"></i> </a> </td>';      
+                     <a href="?peminjaman&delete='.$row['idtransaksipeminjaman'].'"  data-toggle="tooltip" onclick="return confirm("ingin hapus ?")"  title="Hapus" class="btn btn-sm btn-danger"> <i class="fa fa-times"></i> </a> </td>';      
 	}
 	else {
 		$nestedData[] = '<td>
                      <a href="?peminjamanedit&id='.$row['idtransaksipeminjaman'].'"  data-toggle="tooltip" title="Edit" class="btn btn-sm btn-warning"> <i class="fa fa-edit"></i> </a>
-                     <a href="?peminjaman&delete='.$row['idtransaksipeminjaman'].'"  data-toggle="tooltip" title="Hapus" class="btn btn-sm btn-danger"> <i class="fa fa-times"></i> </a> 
+                     <a href="?peminjaman&delete='.$row['idtransaksipeminjaman'].'"  data-toggle="tooltip" onclick="return confirm("ingin hapus ?")" title="Hapus" class="btn btn-sm btn-danger"> <i class="fa fa-times"></i> </a> 
 					 <a href="?pengembalian&id='.$row['idtransaksipeminjaman'].'"  data-toggle="tooltip" title="Pengembalian" class="btn btn-sm btn-info"> <i class="fa fa-undo"></i> </a></td>';      
 	}
       

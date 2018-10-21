@@ -16,13 +16,20 @@
 	$date2 =  mktime(0, 0, 0, $tgl_kembali[1],$tgl_kembali[2],$tgl_kembali[0]);
 	$interval =($date2 - $date1)/(3600*24) * -1;
 	
-	//Menghitung denda
-	$querydenda = mysqli_query($con,"SELECT nominal FROM denda WHERE lamadenda='1'") or die(mysqli_error($con));
-    $datadenda = mysqli_fetch_array($querydenda);
-	$besardenda = $datadenda['nominal'];
-	
-	//jumlah yang dibayar
-	$totalhargadenda = $interval * $besardenda;
+	if(date('Y-m-d') >$data['tanggalpemulangan']){
+		
+		//Menghitung denda
+		$querydenda = mysqli_query($con,"SELECT nominal FROM denda WHERE lamadenda='1'") or die(mysqli_error($con));
+		$datadenda = mysqli_fetch_array($querydenda);
+		$besardenda = $datadenda['nominal'];
+		
+		//jumlah yang dibayar
+		$totalhargadenda = $interval * $besardenda;
+	}
+	else {
+		$totalhargadenda=0;
+		$interval =0;
+	}
 	
 	
  }
@@ -34,14 +41,14 @@
                 <a href="index.php">Home</a>
             </li>
             <li class="breadcrumb-item">
-                <a href="?peminjaman">Pengembalian</a>
+                <a href="?pengembalian">Pengembalian</a>
             </li>
             <?php if(isset($edit)) { ?>
-            <li class="breadcrumb-item active">Edit Pengembalian</li>
+            <li class="breadcrumb-item active">Edit Pengembalian, Tanggal Sekarang <?php echo date('d/m/Y'); ?></li>
             <?php } 
             else {
             ?>
-            <li class="breadcrumb-item active">Tambah Pengembalian</li>
+            <li class="breadcrumb-item active">Tambah Pengembalian, Tanggal Sekarang <?php echo date('d/m/Y'); ?></li>
             <?php } ?>
         </ul>
     </div>
@@ -49,6 +56,7 @@
 </div>
 <section class="forms">
     <div class="container-fluid">
+	
     <!-- Page Header-->
         <header> 
         </header>
@@ -57,7 +65,7 @@
             <?php include "halaman/notifikasi.php"; ?>
                 <div class="card">
                     <div class="card-header d-flex align-items-center">
-                        <h4>Pengembalian Pinjaman Dari Tanggal <?php echo date('d/m/Y',strtotime($data['tanggalpeminjaman']))." s/d ".date('d/m/Y',strtotime($data['tanggalpemulangan'])); ?></h4>
+                        <h4><strong style='color:blue'>Pinjaman </strong> <?php echo date('d/m/Y',strtotime($data['tanggalpeminjaman'])).", <strong style='color:purple'>Tanggal Kembalikan </strong>".date('d/m/Y',strtotime($data['tanggalpemulangan'])); ?></h4>
                     </div>
                 <div class="card-body">
                     <div class="row">

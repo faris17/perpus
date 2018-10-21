@@ -1,6 +1,7 @@
 <?php
 if(isset($_GET['delete']) and $_GET['delete']!="") {
 	include "process/deltransaksipengembalian.php"; //link ke delete buku
+	
 }
 ?>
       <!-- Breadcrumb-->
